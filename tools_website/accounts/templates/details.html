@@ -1,0 +1,23 @@
+{%extends 'master.html'%}
+{%block title%}List of tools{%endblock%}
+
+{%block content%}
+<center><div class="topnav">
+<a href="/">HOME</a> | <a href="/accounts">HACKING TOOLS</a> | <a href="/accounts/forum/">HACKING FORUM</a>
+</div></center>
+
+<center>
+<h1>Available tools in the store</h1>
+    
+    {%for tools in object_list%}
+        <h1>{{tools.price}}</h1>	
+        <div class="mycard">
+        <p>{{tools.name}}</p>
+        <img src="{{tools.img.url}}" alt="avatar" height="200" width="200">
+        <p>{{tools.description}}</p>
+        </div>
+        <div class="topnav">
+        <a href='/accounts/order/{{tools.id}}'>PLACE ORDER</a>  |  <a href="/">GO BACK HOME</a>
+        </div></br></br>
+   {%endfor%}
+{%endblock%}

@@ -1,0 +1,28 @@
+{%extends 'master.html'%}
+{%load static%}
+{%block title%}Log in{%endblock%}
+
+
+{%block content%}
+<center>
+<h1>BLACKHAT-RUSIA STORE</h1>
+<img src="{% static 'kali1.jpeg'%}" height="200" width="300">
+<h1>Login To Your Aconunt</center></h1>
+<div class="button">
+<form method="post">
+{%csrf_token%}
+</div>
+{{form.as_p}}
+<button type="submit">Login</button>
+<label>
+<input type="checkbox" checked="checked" name="remember"> Remember me
+</label>
+
+<div class="container" style="background-color:black">
+<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+<span class="psw">Forgot <a href="#">password?</a></span>
+</div>
+</form>
+{%endblock%}
+
+ 

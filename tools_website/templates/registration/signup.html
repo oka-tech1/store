@@ -1,0 +1,21 @@
+{%extends 'master.html'%}
+
+{%block title%}Signup account{%endblock%}
+
+{%block content%}
+<h1><center>Sign Up A New Account</center></h1>
+
+<div class="container">
+<form method="post">
+{%csrf_token%}
+</div>
+
+{{form}}
+<div class="mycard">
+<button class="signup-form">Sign Up</button>
+</div>
+<center><h1>Have an account? : <a href="{%url 'login'%}">Log in</a></h1></br></br></center>
+</form>
+</body>
+</html>
+{%endblock%}

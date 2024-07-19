@@ -1,0 +1,75 @@
+{%extends 'master.html'%}
+{%load static%}
+{%block title%}Home Page{%endblock%}
+<img src="{% static 'kali1.jpeg'%}" height="120" width="120">
+{%block content%}
+{%if user.is_authenticated%}
+<center>
+<div class="topnav">
+<a href="/">HOME</a> | <a href="accounts/">HACKING TOOLS</a> | <a href="/accounts/forum/">HACKING FORUM</a>
+</div></br>
+</center>
+<div class="topnav">
+<h1>Wallet Balance🏦️</h1>
+<p>0 usdt</p>	
+</div>
+</br></br><li><a href="/accounts/contact">FUND WALLET</a></li></br><li><a href="/accounts">CHECK STORE</a></li>
+</div>
+    <div class="container">
+    <form method="post" action="{%url "logout"%}" method="post"> 
+    {%csrf_token%}
+    <button class="logout-form">Log Out</button>
+    </form>
+
+
+<center><img src="{% static 'hacker3.jpeg'%}" height="160" width="160">
+<h2>Your are interacting as <div class="mycard"> {{user.username}}{{user.entry.amount}}</h2>
+
+    
+    <h3>User Level.</h3>
+    <img src="{% static 'level.png'%}" height="50" width="100">
+    <p>Buy tools and gain stars to upgrade to the</br> ultimate hackers forum</p></center></div>
+    {%for post in object_list%}
+        <h5>{{post.name}}</h5>   
+    {%endfor%}     
+<center><h1>Hacking Mastery Books For Penetration Testers</h1></center>
+    <div class="imgcontainer">
+    <img src="{%static 'hacking.gif'%}" height="200" width="200"><br><br>
+    The ultimate hacking book</br><a href="/accounts/forum/">READ MORE</a>
+    </div>
+
+    <div class="imgcontainer">
+    <img src="{%static 'android1.png'%}" height="200" width="200"><br><br>
+    The Android penetration toolkit guide</br><a href="/accounts/forum/">READ MORE</a>
+     
+    </div>
+
+    <div class="imgcontainer">
+    <img src="{%static 'exploit.jpeg'%}" height="200" width="200"><br><br>
+    System exploitation guide</br><a href="/accounts/forum/">READ MORE</a>
+    </div>
+    
+    <div class="imgcontainer">
+    <img src="{%static 'ano.jpeg'%}" height="200" width="200"><br><br>
+    The principles of anonymous</br><a href="/accounts/forum/">READ MORE</a> 
+    </div></br>
+
+    
+{%else%}
+    <center>
+    <img src="{% static 'kali1.jpeg'%}" height="200" width="300">
+    <h1>Welcome To</br> BLACKHAT-RUSIA STORE</br>HOME OF HACKING TOOLS</h1>
+    <p>We sell any kind of hacking tools</p>
+    <p>Own An account and Purchase Your Tool Choice</p>
+    <p>With great power comes great responsibilities. Explore the web</p>
+    
+    <div class="mycard">
+    <h3>Sign Up To Your Account</h3>
+    <p>You are not logged in : <a href="{%url 'login'%}">Login</a></p>
+    <p>Don't Have Account? : <a href="{%url 'signup'%}"> Create Account</a></p>
+    </div>
+    </center>
+{%endif%}
+{%endblock%}
+</center>
+</html>

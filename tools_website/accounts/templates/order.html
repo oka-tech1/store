@@ -1,0 +1,19 @@
+{%extends 'master.html'%}
+{%block title%}verify transaction{%endblock%}
+{%load static%}
+{%block content%}
+<center><div class="topnav">
+<a href="/">HOME</a> | <a href="/accounts">HACKING TOOLS</a> | <a href="#">HACKING FORUM</a>
+</div>
+
+    <center>
+    <img src="{% static 'kali1.jpeg'%}" height="200" width="300">
+    </center>
+    <p>You are about to Purchase</p><h1>{{orders.name}}</h1>
+    <p>For the price of</p><h1>{{orders.price}}</h1>
+<div class="topnav">
+    <p><a href="/accounts/fund">CONFIRM PAYMENT</a></p>
+</div>
+</center>
+{%endblock%}    
+    

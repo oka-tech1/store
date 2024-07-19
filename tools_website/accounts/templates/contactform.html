@@ -1,0 +1,36 @@
+{%extends 'master.html'%}
+{%block title%}verify transaction{%endblock%}
+
+{%block content%}
+<center>
+<div class="topnav">
+<a href="/">HOME</a> | <a href="/accounts/">HACKING TOOLS</a> | <a href="/accounts/forum/">HACKING FORUM</a>
+</div></br>
+</center>
+
+<center>
+<p>Send amount to get funded</p><h1>(TRC 20)USDT Address</h1></center>
+<div class="mycard">
+<input type="text" oncopy="myFunction()" value="TGnhYy4tDAPQHo7zCGCbhs3BPbGrg9bm5N">
+<p id="demo"></p>
+<script>
+function myFunction() {
+  document.getElementById("demo").innerHTML = "Copied Sucessfully!"
+}
+</script>
+</div>
+
+<center><h1>Transaction Verification</h1>
+<p>Enter the information below after funding the above address to be credited in your wallet.</p></center>
+<div class="container">
+<form action="/accounts/success/" method="post">
+{%csrf_token%}
+</div>
+<center>
+{{form}}
+</center>
+<div class="mycard">
+<button type="submit">Submit</button>
+</div>
+</form>
+{%endblock%}
