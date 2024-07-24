@@ -11,9 +11,10 @@
 </center>
 <div class="topnav">
 <h1>Wallet Balance🏦️</h1>
-<p>0 usdt</p>	
+<strong>{{request.user.profile.account_detals}} USDT</strong>
+<p><center>{{request.user.profile.msg}}</center></p>	
 </div>
-</br></br><li><a href="/accounts/contact">FUND WALLET</a></li></br><li><a href="/accounts">CHECK STORE</a></li>
+</br></br><li><a href="/accounts/saveform">FUND WALLET</a></li></br><li><a href="/accounts">CHECK STORE</a></li>
 </div>
     <div class="container">
     <form method="post" action="{%url "logout"%}" method="post"> 
@@ -23,7 +24,7 @@
 
 
 <center><img src="{% static 'hacker3.jpeg'%}" height="160" width="160">
-<h2>Your are interacting as <div class="mycard"> {{user.username}}{{user.entry.amount}}</h2>
+<h2>Your are interacting as <div class="mycard"> {{user.username}}</h2>
 
     
     <h3>User Level.</h3>

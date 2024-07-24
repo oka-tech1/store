@@ -17,25 +17,33 @@ class tools(models.Model):
         
 class contactus(models.Model):
     Username = models.CharField(max_length=255)
-    Email = models.CharField(max_length=150)
     Your_trc20_wallet_address = models.CharField(max_length=255)
 
     def __str__(self):
         return f"{self.Username} {self.Email} {self.Your_trc20_wallet_address}"
 
 
-
-class nameofuser(models.Model):
-    users = models.OneToOneField(User, on_delete=models.CASCADE)
-    amount = models.IntegerField(null=True)
+class order_emails(models.Model):
+    Email = models.EmailField(null=True, max_length=200)
+    
     def __str__(self):
-        return f'{self.users}{self.amount}'
+        return f'{self.Email}'
+
+      
+class profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    account_detals = models.IntegerField(default=0)
+    msg = models.TextField(max_length=500, default='You dont have sufficient fund to purchase any tool, fund wallet.')
+    def __str__(self):
+        return f'{self.user.username} {self.msg}'    
+
+
+     
+
+
 
 
         
-class Meta:
-    ordering = ["created"]
-    indexes = [models.Index(fields=["created"]),]
 
 
     

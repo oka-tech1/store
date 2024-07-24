@@ -89,8 +89,9 @@ button:hover {
 .imgcontainer {
   text-align: center;
   margin: 24px 0 12px 0;
-  float: right;
+  float: center;
   padding: 16px;
+
 }
 
 /* Avatar image */

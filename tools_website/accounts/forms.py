@@ -1,8 +1,14 @@
 from django import forms
-from .models import contactus
+from .models import contactus, order_emails
 
-class contactform(forms.ModelForm):
+
+
+
+class userform(forms.ModelForm):
     
     class Meta:
         model = contactus
-        fields = ['Username', 'Email', 'Your_trc20_wallet_address']
+        fields = ['Username', 'Your_trc20_wallet_address']
+
+class emailform(forms.Form):
+    Email = forms.EmailField(label="Email Address", max_length=100)
