@@ -1,0 +1,15 @@
+{%extends 'master.html'%}
+{%load static%}
+{%block title%}success{%endblock%}
+<img src="{% static 'kali1.jpeg'%}" height="120" width="120">
+
+{%block content%}
+<center>
+<div class="topnav">
+<a href="/">HOME</a> | <a href="/accounts">HACKING TOOLS</a> | <a href="/accounts/forum/">HACKING FORUM</a>
+</div></br>
+</center>
+<center>
+    <p>The order placed for {{orders.name}} tool with the price of ${{orders.price}} is</br> SUCCESSFUL, THANK YOU.</p>
+    <p>Add an email address to receive {{orders.name}} tool<a href="/accounts/Email"></br>ADD EMAIL ADDRESS</a></p></br></br>
+{%endblock%}

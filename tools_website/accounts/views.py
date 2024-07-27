@@ -1,12 +1,12 @@
 from django.shortcuts import render
 # Create your views here.
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import CreateView, ListView
 from django.urls import reverse_lazy
 from .models import tools, contactus, profile, order_emails
-from .forms import userform, emailform
+from .forms import UserForm, emailform
 
 
 
@@ -23,12 +23,14 @@ class details(ListView):
         
 def order(request, id):
     orders = tools.objects.get(id=id)
-    template = loader.get_template('order.html')
-    context = {
-        'orders': orders,
-    }
-    return HttpResponse(template.render(context, request))
-    
+    profile = request.user.profile
+    if profile.account_detals >= orders.price:
+        profile.account_detals -= orders.price
+        profile.save()
+        return render(request, 'order_suc.html', {'orders': orders, 'remaining_balance': profile.account_detals})
+    else:
+        return render(request, 'insuf_fund.html',  {'orders':orders,})
+                 
 
 def fund(request, id):
     order = tools.objects.get(id=id)
@@ -41,35 +43,39 @@ def fund(request, id):
 
     
 def saveform(request):
-    context ={}
-    form = userform(request.POST or None, request.FILES or None)
-    if form.is_valid():
-        form.save()
-    context['form'] = form
-    return render(request, "contactform.html", context)
+    if request.method =='POST':
+        form = UserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/accounts/credit/')
+    else:
+        form = UserForm()
+    return render(request, 'contactform.html', {'form':form})
+    
 
 def success(request):
     template = loader.get_template('success.html')
     return HttpResponse(template.render())    
 
 
+
+def credit(request):
+    template = loader.get_template('credit.html')
+    return HttpResponse(template.render())
+
+
+
+
 def Email(request):
     if request.method == "POST":  
             form = emailform(request.POST)  
             if form.is_valid():  
-                try:  
-                    return redirect('/Email')  
-                except:  
-                    pass  
-    else:  
-        form = emailform()  
-    return render(request,'email.html',{'form':form})  
-def profile(request):
-    template = loader.get_template('profile.html')
-    return HttpResponse(template.render())    
-
-
-
+                form.save()
+                return HttpResponseRedirect('/accounts/success/')
+    else:
+        form = emailform()
+    return render(request, 'email.html', {'form':form}) 
+ 
 def forum(request):
     template = loader.get_template('forum.html')
     return HttpResponse(template.render())
@@ -77,3 +83,4 @@ def forum(request):
 
 def profile(request):
     return render(request, 'profile.html')
+

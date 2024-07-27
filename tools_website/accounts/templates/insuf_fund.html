@@ -1,0 +1,18 @@
+{%extends 'master.html'%}
+{%load static%}
+{%block title%}Insufficient fund{%endblock%}
+<img src="{% static 'kali1.jpeg'%}" height="120" width="120">
+
+{%block content%}
+<center>
+<div class="topnav">
+<a href="/">HOME</a> | <a href="/accounts">HACKING TOOLS</a> | <a href="/accounts/forum/">HACKING FORUM</a>
+</div></br>
+
+<p>Insufficient funds, please fund wallets</p>
+<p>Your balance is: ${{request.user.profile.account_detals}}</p>
+<p><a href="/accounts/saveform">FUND WALLET</a></p>	
+
+
+
+{%endblock%}

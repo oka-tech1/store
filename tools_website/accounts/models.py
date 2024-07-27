@@ -5,7 +5,7 @@ from django.conf import settings
 
 # Create your models here.
 class tools(models.Model):
-    price = models.CharField(max_length=10, null=True)
+    price = models.IntegerField(null=True)
     name = models.CharField(max_length=255)
     img = models.ImageField(upload_to="images/")
     description = models.TextField(max_length=255)
@@ -17,10 +17,11 @@ class tools(models.Model):
         
 class contactus(models.Model):
     Username = models.CharField(max_length=255)
+    Amount_Transfered = models.CharField(max_length=255, null=True)
     Your_trc20_wallet_address = models.CharField(max_length=255)
 
     def __str__(self):
-        return f"{self.Username} {self.Email} {self.Your_trc20_wallet_address}"
+        return f"{self.Username}{self.Your_trc20_wallet_address}"
 
 
 class order_emails(models.Model):
@@ -33,7 +34,7 @@ class order_emails(models.Model):
 class profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     account_detals = models.IntegerField(default=0)
-    msg = models.TextField(max_length=500, default='You dont have sufficient fund to purchase any tool, fund wallet.')
+    msg = models.TextField(max_length=500, default='Hello!! welcome, Place order and get your tool delivered to email')
     def __str__(self):
         return f'{self.user.username} {self.msg}'    
 

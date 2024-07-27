@@ -4,11 +4,13 @@ from .models import contactus, order_emails
 
 
 
-class userform(forms.ModelForm):
-    
-    class Meta:
+class UserForm(forms.ModelForm):
+      class Meta:
         model = contactus
-        fields = ['Username', 'Your_trc20_wallet_address']
+        fields = '__all__'
 
-class emailform(forms.Form):
-    Email = forms.EmailField(label="Email Address", max_length=100)
+class emailform(forms.ModelForm):
+    class Meta:
+        model = order_emails
+        fields = '__all__'
+  

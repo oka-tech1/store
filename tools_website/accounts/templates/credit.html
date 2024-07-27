@@ -1,0 +1,15 @@
+{%extends 'master.html'%}
+{%block title%}verify transaction{%endblock%}
+{%load static%}
+{%block content%}
+<center><div class="topnav">
+<a href="/">HOME</a> | <a href="/accounts">HACKING TOOLS</a> | <a href="#">HACKING FORUM</a>
+</div>
+
+    <center>
+    <img src="{% static 'kali1.jpeg'%}" height="200" width="300">
+    <h1>Form Received Successfully.</h1>
+    <p>Your wallet will be credited after transaction verification.</br>Note: You wont be credited if wallet submitted doesnt match any trsnsaction in the server.
+    <p>Back to <a href="/">HOME</a></p>   
+    </center>
+{%endblock%}

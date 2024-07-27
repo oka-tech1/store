@@ -10,7 +10,7 @@
 <h1>Available tools in the store</h1>
     
     {%for tools in object_list%}
-        <h1>{{tools.price}}</h1>	
+        <h1>${{tools.price}}</h1>	
         <div class="mycard">
         <p>{{tools.name}}</p>
         <img src="{{tools.img.url}}" alt="avatar" height="200" width="200">
